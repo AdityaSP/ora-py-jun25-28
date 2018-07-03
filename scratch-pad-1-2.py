@@ -1062,3 +1062,396 @@ SyntaxError: invalid syntax
 'D:\\sw\\Python27\\lib\\site-packages\\requests\\__init__.pyc'
 >>> 
 >>> 
+'D:\\sw\\Python27\\lib\\site-packages\\requests\\__init__.pyc'
+'D:\\sw\\Python27\\lib\\site-packages\\requests\\__init__.pyc'
+
+>>> 
+>>> 
+>>> 
+>>> class Car():
+	pass
+
+>>> sw = Car()
+>>> type(sw)
+<type 'instance'>
+>>> a = int()
+>>> class Bus():
+	pass
+
+>>> al = Bus()
+>>> b = str()
+>>> type(a), type(b)
+(<type 'int'>, <type 'str'>)
+>>> type(a) == type(b)
+False
+>>> type(sw) , type(al)
+(<type 'instance'>, <type 'instance'>)
+>>> type(sw) == type(al)
+True
+>>> class Car(object):
+	pass
+
+>>> class Bus(object):
+	pass
+
+>>> sw = Car()
+>>> al = Bus()
+>>> type(sw), type(al)
+(<class '__main__.Car'>, <class '__main__.Bus'>)
+>>> type(sw) == type(al)
+False
+>>> class Car(object):
+	def __init__(self):
+		print "In here"
+
+		
+>>> 
+>>> 
+>>> city = Car()
+In here
+>>> city2 = Car()
+In here
+>>> class Car(object):
+	def __init__(self):
+		self.name = 'City'
+		self.brand = 'Honda'
+
+		
+>>> city = Car()
+>>> city.name
+'City'
+>>> city.brand
+'Honda'
+>>> camry = Car()
+>>> camry.name
+'City'
+>>> camry.brand
+'Honda'
+>>> class Car(object):
+	def __init__(self, n, b):
+		self.name = n
+		self.brand = b
+
+		
+>>> city = Car()
+
+Traceback (most recent call last):
+  File "<pyshell#571>", line 1, in <module>
+    city = Car()
+TypeError: __init__() takes exactly 3 arguments (1 given)
+>>> city = Car('City', 'Honda')
+>>> camry = Car('Camry', 'Toyota')
+>>> city.name, city.brand
+('City', 'Honda')
+>>> camry.name, camry.brand
+('Camry', 'Toyota')
+>>> class Car(object):
+	def __init__(self, n, b):
+		self.name = n
+		self.brand = b
+	def drive(self):
+		print self.name , 'drives well'
+
+		
+>>> city = Car('City', 'Honda')
+>>> city.drive()
+City drives well
+>>> cam = Car('Camry', 'Toyota')
+>>> cam.drive()
+Camry drives well
+>>> 
+>>> 
+>>> 
+>>> l
+
+Traceback (most recent call last):
+  File "<pyshell#587>", line 1, in <module>
+    l
+NameError: name 'l' is not defined
+>>> l = [1,2,3]
+>>> l[100]
+
+Traceback (most recent call last):
+  File "<pyshell#589>", line 1, in <module>
+    l[100]
+IndexError: list index out of range
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> err = IndexError()
+>>> raise err
+
+Traceback (most recent call last):
+  File "<pyshell#596>", line 1, in <module>
+    raise err
+IndexError
+>>> err = IndexError('Something that I did not like')
+>>> raise err
+
+Traceback (most recent call last):
+  File "<pyshell#598>", line 1, in <module>
+    raise err
+IndexError: Something that I did not like
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> t = 'hello good morning'
+>>> p = 'hello
+SyntaxError: EOL while scanning string literal
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> t = 'hello good morning'
+>>> p = 'hello'
+>>> import re
+>>> re.search(p, t)
+<_sre.SRE_Match object at 0x00000000030C0F38>
+>>> m = re.search(p, t)
+>>> m.start(), m.end()
+(0, 5)
+>>> t[m.start(): m.end()]
+'hello'
+>>> t = 'hello good morning hello'
+>>> p
+'hello'
+>>> m = re.search(p,t)
+>>> m.start(), m.end()
+(0, 5)
+>>> 
+>>> 
+>>> re.findall(p,t)
+['hello', 'hello']
+>>> 
+>>> 
+>>> for m in re.finditer(p,t):
+	print "Found at:", m.start(), m.end()
+
+	
+Found at: 0 5
+Found at: 19 24
+>>> 
+>>> 
+>>> p
+'hello'
+>>> t
+'hello good morning hello'
+>>> 
+>>> 
+>>> p = 'sas'
+>>> t = 'sasasas'
+>>> re.findall(p,t)
+['sas', 'sas']
+>>> for m in re.finditer(p,t):
+	print m.start(), m.end()
+
+	
+0 3
+4 7
+>>> 
+>>> 
+>>> 
+>>> p = 'Monday'
+>>> t = 'monday tuesday'
+>>> re.findall(p,t)
+[]
+>>> t = 'monday tuesday Monday'
+>>> p
+'Monday'
+>>> re.findall(p,t)
+['Monday']
+>>> p = '[Mm]onday'
+>>> # Monday or monday
+>>> re.findall(p,t)
+['monday', 'Monday']
+>>> 
+>>> 
+>>> t = 'USD 100'
+>>> 
+>>> 
+>>> t = 'xxyxyyxyyyxyyyyyy'
+>>> p = 'xy*'
+>>> re.findall(p,t)
+['x', 'xy', 'xyy', 'xyyy', 'xyyyyyy']
+>>> p = 'xy+'
+>>> re.findall(p,t)
+['xy', 'xyy', 'xyyy', 'xyyyyyy']
+>>> t = 'USD 100'
+>>> p = '[0123456789]+'
+>>> re.findall(p,t)
+['100']
+>>> 
+>>> p = '[0-9]+'
+>>> re.findall(p,t)
+['100']
+>>> 
+>>> 
+>>> t = 'xxyxyyxyyyxyyyyyy'
+>>> p = 'xy?'
+>>> re.findall(p,t)
+['x', 'xy', 'xy', 'xy', 'xy']
+>>> p = 'xy{3}'
+>>> re.findall(p,t)
+['xyyy', 'xyyy']
+>>> 
+>>> 
+>>> t = 'Date 05-10-2018'
+>>> p = r'[0-9]{2}-[0-9]{2}-[0-9]{4}'
+>>> re.findall(p,t)
+['05-10-2018']
+>>> 
+>>> t = 'on Date 05-10-2018 I made 100K'
+>>> p = r'([0-9]{2})-([0-9]{2})-([0-9]{4})'
+>>> re.findall(p,t)
+[('05', '10', '2018')]
+>>> p = r'[0-9]{2}-[0-9]{2}-[0-9]{4}'
+>>> re.findall(p,t)
+['05-10-2018']
+>>> p = r'([0-9]{2})-([0-9]{2})-([0-9]{4})'
+>>> m = re.search(p,t)
+>>> m.start(), m.end()
+(8, 18)
+>>> m.group(0)
+'05-10-2018'
+>>> m.group(1)
+'05'
+>>> m.group(2)
+'10'
+>>> m.group(3)
+'2018'
+>>> p = r'(?P<mon>[0-9]{2})-(?P<day>[0-9]{2})-(?P<year>[0-9]{4})'
+>>> m = re.search(p,t)
+>>> m.group(0)
+'05-10-2018'
+>>> m.group(1)
+'05'
+>>> m.group('mon')
+'05'
+>>> m.group(2)
+'10'
+>>> m.group('day')
+'10'
+>>> m.group(3)
+'2018'
+>>> m.group('year')
+'2018'
+>>> 
+>>> 
+>>> t = 'http://google.com'
+>>> t1 = 'www.google.com'
+>>> p = r'http|www'
+>>> re.findall(p,t)
+['http']
+>>> re.findall(p,t1)
+['www']
+>>> 
+>>> 
+>>> t = 'man eats mango'
+>>> p = r'man|mango'
+>>> re.findall(p,t)
+['man', 'man']
+>>> p = r'mango|man'
+>>> re.findall(p,t)
+['man', 'mango']
+>>> p = r'man(go)?'
+>>> for m in re.finditer(p,t):
+	print m.group(0)
+
+	
+man
+mango
+>>> t = '20 eggs in a basket. I took 12.'
+>>> t = 'I took 12. There were 20 in the basket'
+>>> t = 'I took 12. There were 20 in the basket.'
+>>> p = r'.+([0-9]+)\.'
+>>> re.findall(p,t)
+['2']
+>>> t = 'I took 15. There were 20 in the basket.'
+>>> re.findall(p,t)
+['5']
+>>> m = re.search(p,t)
+>>> m.group(0)
+'I took 15.'
+>>> p = r'.+?([0-9]+)\.'
+>>> m = re.search(p,t)
+>>> m.group(0)
+'I took 15.'
+>>> m.group(1)
+'15'
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> def add(x,y):
+	return x + y
+
+>>> x = add(3,4)
+>>> if x == 7:
+	print "test passes"
+else:
+	print "test fails"
+
+	
+test passes
+>>> 
+>>> 
+>>> 
+>>> assert x == 7
+>>> assert x == 6
+
+Traceback (most recent call last):
+  File "<pyshell#753>", line 1, in <module>
+    assert x == 6
+AssertionError
+>>> import this
+The Zen of Python, by Tim Peters
+
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren't special enough to break the rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation to guess.
+There should be one-- and preferably only one --obvious way to do it.
+Although that way may not be obvious at first unless you're Dutch.
+Now is better than never.
+Although never is often better than *right* now.
+If the implementation is hard to explain, it's a bad idea.
+If the implementation is easy to explain, it may be a good idea.
+Namespaces are one honking great idea -- let's do more of those!
+>>> 
+>>> 
+>>> li1 = ['one', 'two', 'three']
+>>> li2 = [1,2,3]
+>>> for item in zip(li1, li2):
+	print item
+
+	
+('one', 1)
+('two', 2)
+('three', 3)
+>>> a,b = ('one', 1)
+>>> a
+'one'
+>>> b
+1
+>>> for i1, i2 in zip(li1, li2):
+	print i1, i2
+
+	
+one 1
+two 2
+three 3
+>>> 
